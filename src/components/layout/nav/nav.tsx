@@ -1,4 +1,4 @@
-import { CiSearch, CiHeart, CiShoppingCart } from "react-icons/ci"
+import { CiSearch, CiHeart, CiShoppingCart, CiUser } from "react-icons/ci"
 import { FiMenu } from "react-icons/fi";
 
 import Link from "next/link";
@@ -63,6 +63,10 @@ export default function Nav(){
                     <CiHeart size={30} className="text-black hover:text-gray transition-1s transform hover:scale-110 transition duration-300 cursor-pointer max-[768px]:hidden"/>
                     
                     <CiShoppingCart size={30} className="text-black hover:text-gray transition-1s transform hover:scale-110 transition duration-300 cursor-pointer max-[768px]:hidden"/> 
+
+                    <Link href="minha_conta">
+                        <CiUser size={30} className="text-black hover:text-gray transition-1s transform hover:scale-110 transition duration-300 cursor-pointer max-[768px]:hidden"/>
+                    </Link>
 
                     <FiMenu size={30} className="text-black hover:text-gray transition-1s transform hover:scale-110 transition duration-300 cursor-pointer hidden max-[768px]:block"/> 
 
