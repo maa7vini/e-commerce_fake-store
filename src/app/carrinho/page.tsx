@@ -30,7 +30,7 @@ export default function CarrinhoPage(){
     };
 
     return(
-        <section className="h-dvh">
+        <section className="h-[100vh]">
 
             <Nav />
 

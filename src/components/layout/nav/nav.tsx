@@ -34,7 +34,9 @@ export default function Nav(){
                     <span className="text-2xl font-[600]"> Inscreva-se </span>
                 </Link>
 
-                <span className="text-2xl font-[600]"> Sobre Nós </span>
+                <Link href="/sobre_nos">
+                    <span className="text-2xl font-[600]"> Sobre Nós </span>
+                </Link>
 
                 <Link href="/carrinho">
                     <span className="text-2xl font-[600]"> Carrinho </span>
@@ -74,7 +76,7 @@ export default function Nav(){
                         </li>
 
                         <li>
-                            <a href="#">Sobre Nós</a>
+                            <Link href="/sobre_nos"> Sobre Nós </Link>
                         </li>
 
                         <li>
