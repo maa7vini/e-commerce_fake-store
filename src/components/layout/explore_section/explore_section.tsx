@@ -51,14 +51,23 @@ export default function ExploreSection(){
                         <div className="w-12 h-12 border-4 border-gray-300 border-t-[#DB4444] rounded-full animate-spin"></div>
                     </div>
                     ) : (
-                        produtos.map((produto) => (
+                    produtos.map((produto) => (
                         <CardProduto
-                            key={produto.id}
-                            title={produto.title}
-                            price={produto.price}
-                            rating={produto.rating?.rate || 4.5}
-                            reviews={produto.rating?.count || 99}
-                            image={produto.image}
+                        key={produto.id}
+                        id={produto.id}
+                        title={produto.title}
+                        price={produto.price}
+                        rating={produto.rating?.rate || 4.5}
+                        reviews={produto.rating?.count || 99}
+                        image={produto.image}
+                        onAddToCart={() => {
+                            const carrinho = JSON.parse(localStorage.getItem("carrinho") || "[]");
+                            const jaExiste = carrinho.find((p: any) => p.id === produto.id);
+                            if (!jaExiste) {
+                            const atualizado = [...carrinho, produto];
+                            localStorage.setItem("carrinho", JSON.stringify(atualizado));
+                            }
+                        }}
                         />
                     ))
                 )}

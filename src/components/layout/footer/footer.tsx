@@ -10,7 +10,7 @@ import Linkedin from '@/assets/icon_linkedin.png'
 
 export default function Footer(){
     return(
-        <footer className="bg-black text-white px-[40px] py-[30px]
+        <footer className="bg-black text-white px-[40px] py-[30px] bottom-0
         max-[768px]:py-[30px]
         max-[768px]:px-[10px]">
 

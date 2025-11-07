@@ -1,7 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 import { CiHeart } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa6";
 
 interface CardProdutoProps {
     title: string;
@@ -9,9 +12,28 @@ interface CardProdutoProps {
     rating: number;
     reviews: number;
     image: string;
+    id?: number;
+    isCarrinho?: boolean;
+    onAddToCart?: () => void;
+    onRemoveFromCart?: () => void;
 }
 
-export default function CardProduto({title, price, rating = 0, reviews = 0, image}: CardProdutoProps){
+export default function CardProduto({id, title, price, rating = 0, reviews = 0, image, isCarrinho = false, onAddToCart, onRemoveFromCart}: CardProdutoProps){
+    const [isFavorited, setIsFavorited] = useState(false);
+
+    useEffect(() => {
+      const carrinho = JSON.parse(localStorage.getItem("carrinho") || "[]");
+      const jaExiste = carrinho.some((p: any) => p.id === id);
+      setIsFavorited(jaExiste);
+    }, [id]);
+
+    const handleFavoriteClick = () => {
+      setIsFavorited(!isFavorited);
+      if (!isFavorited && onAddToCart) {
+        onAddToCart();
+      }
+    };
+
     return(
         <div className="flex flex-col h-auto w-[250px] rounded-[3px] group hover:cursor-pointer">
       
@@ -21,12 +43,21 @@ export default function CardProduto({title, price, rating = 0, reviews = 0, imag
         style={{ backgroundImage: `url(${image})`, backgroundSize: "contain", }}
       >
 
-        <div className="bg-white flex items-center justify-center 
-                        p-[5px] rounded-2xl hover:scale-110 transition duration-300 
-                        cursor-pointer absolute z-10 top-2 right-2">
-          <CiHeart size={20} />
+        <div
+          className="bg-white flex items-center justify-center p-[5px] rounded-2xl hover:scale-110 transition duration-300 cursor-pointer absolute z-10 top-2 right-2"
+          onClick={isCarrinho ? onRemoveFromCart : handleFavoriteClick}
+        >
+          {isCarrinho ? (
+            <FaTrash size={18} className="text-gray-700 hover:text-[#DB4444]" />
+          ) : (
+            <CiHeart
+              size={22}
+              className={`transition duration-300 ${
+                isFavorited ? "text-[#DB4444]" : "text-black"
+              }`}
+            />
+          )}
         </div>
-
        
         <div className="bg-yellow-500 flex items-center  
                         px-[5px] py-[0px] rounded-[3px] absolute z-10 top-2 left-2 text-white gap-[3px]">

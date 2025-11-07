@@ -36,7 +36,9 @@ export default function Nav(){
 
                 <span className="text-2xl font-[600]"> Sobre Nós </span>
 
-                <span className="text-2xl font-[600]"> Carrinho </span>
+                <Link href="/carrinho">
+                    <span className="text-2xl font-[600]"> Carrinho </span>
+                </Link>
 
                 <Link href="/minha_conta">
                     <span className="text-2xl font-[600]"> Minha Conta </span>
@@ -54,7 +56,7 @@ export default function Nav(){
 
             <div className="p-10 flex items-center justify-between border border-[#f5f5f5]">
 
-                <Link href="minha_conta">
+                <Link href="/">
                     <h1 className="text-2xl font-bold">
                         Exclusive
                     </h1>
@@ -98,9 +100,11 @@ export default function Nav(){
                         </div>
 
                     </div>
-                    
-                    <CiShoppingCart size={30} className="text-black hover:text-gray transition-1s transform hover:scale-110 transition duration-300 cursor-pointer 
-                    hover:text-red-700 max-[768px]:hidden"/> 
+
+                    <Link href="carrinho">
+                        <CiShoppingCart size={30} className="text-black hover:text-gray transition-1s transform hover:scale-110 transition duration-300 cursor-pointer 
+                       hover:text-red-700 max-[768px]:hidden"/> 
+                    </Link>
 
                     <Link href="minha_conta">
                         <CiUser size={30} className="text-black hover:text-gray transition-1s transform hover:scale-110 transition duration-300 cursor-pointer 
