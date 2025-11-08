@@ -49,7 +49,7 @@ npm install
 
 ### 4️⃣ Execute o servidor de desenvolvimento
 ```bash
-npm install
+npm run dev
 ````
 
 O projeto estará rodando em:
